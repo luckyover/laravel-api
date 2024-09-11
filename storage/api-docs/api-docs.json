@@ -1,0 +1,162 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Lấy thông tin người dùng",
+                "operationId": "f915f52e6ca5594826099a4c411f42d7",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/api_key"
+                    },
+                    {
+                        "$ref": "#/components/parameters/request_id"
+                    },
+                    {
+                        "$ref": "#/components/parameters/screen_id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Thành công"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "parameters": {
+            "api_key": {
+                "name": "x-api-key",
+                "in": "header",
+                "description": "Key for client access API",
+                "required": true,
+                "schema": {
+                    "type": "string",
+                    "example": "QOa7BmWN9ukdhPYtUJqbMlmmfRmhxYzo"
+                }
+            },
+            "request_id": {
+                "name": "x-request-id",
+                "in": "header",
+                "description": "Id for identity each request. It is a UUID v4",
+                "required": true,
+                "schema": {
+                    "type": "string",
+                    "example": "4a4c1314-4cbb-461b-9663-aa9f6f03efd9"
+                }
+            },
+            "screen_id": {
+                "name": "x-screen-id",
+                "in": "header",
+                "description": "Id of screen call API",
+                "schema": {
+                    "type": "string",
+                    "example": "Swagger"
+                }
+            }
+        },
+        "examples": {
+            "invalid_data": {
+                "summary": "Invalid data",
+                "value": {
+                    "code": 400,
+                    "messageNo": "E001",
+                    "message": "項目が入力されていません",
+                    "invalidData": {
+                        "username": [
+                            "E001",
+                            "E002"
+                        ]
+                    }
+                }
+            },
+            "bad_request": {
+                "summary": "Bad request",
+                "value": {
+                    "code": 400,
+                    "messageNo": "E400",
+                    "message": "エラーが発生しました。もう一度お願いします。"
+                }
+            },
+            "not_auth": {
+                "summary": "Not authentication",
+                "value": {
+                    "code": 401,
+                    "messageNo": "E401",
+                    "message": "ログインセッションの有効期限が切れています。もう一度ログインしてください。"
+                }
+            },
+            "not_access": {
+                "summary": "Not access",
+                "value": {
+                    "code": 403,
+                    "messageNo": "E403",
+                    "message": "この機能にアクセスする権限がありません。"
+                }
+            },
+            "not_acceptable": {
+                "summary": "Not Acceptable",
+                "value": {
+                    "code": 406,
+                    "messageNo": "E406",
+                    "message": "項目が入力されていません"
+                }
+            },
+            "exception": {
+                "summary": "Exception",
+                "value": {
+                    "code": 500,
+                    "messageNo": "E500",
+                    "message": "エラーが発生しました。もう一度お願いします。",
+                    "dataErrors": {
+                        "instance": "ErrorException",
+                        "line": 37,
+                        "file": "LoginModel.php",
+                        "code": 0,
+                        "message": "Undefined array key companycode"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "User",
+            "description": "User"
+        }
+    ],
+    "security": {
+        "security": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
