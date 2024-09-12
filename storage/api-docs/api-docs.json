@@ -1,8 +1,18 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "My API",
-        "version": "1.0.0"
+        "title": "Laravel API",
+        "description": "",
+        "contact": {
+            "name": "Tuyen DN",
+            "url": "",
+            "email": ""
+        },
+        "license": {
+            "name": "Copyright © A.N.S corp. All Rights Reserved.",
+            "url": ""
+        },
+        "version": "v1"
     },
     "paths": {
         "/api/user": {
@@ -11,7 +21,7 @@
                     "User"
                 ],
                 "summary": "Lấy thông tin người dùng",
-                "operationId": "f915f52e6ca5594826099a4c411f42d7",
+                "operationId": "6f40c371d2055fa35ea49ea767727d95",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/api_key"

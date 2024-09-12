@@ -3,6 +3,20 @@
 namespace App\Http;
 
 /**
+ *  @OA\Info(
+ *      version="v1",
+ *      title="Laravel API",
+ *      description="",
+ *      @OA\Contact(
+ *          name="Tuyen DN",
+ *          email="",
+ *          url=""
+ *      ),
+ *      @OA\License(
+ *          name="Copyright © A.N.S corp. All Rights Reserved.",
+ *          url=""
+ *      )
+ *  )
  *  @OA\SecurityScheme(
  *      securityScheme="bearerAuth",
  *      in="header",

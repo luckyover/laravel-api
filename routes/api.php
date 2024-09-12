@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Controllers\api\ApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,25 +20,8 @@ use App\Http\Requests\RegisterRequest;
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/login', 'ApiController@login')->name('login');
 
-Route::post('/login', function (Request $request) {
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
-
-    $user = User::where('email', $request->email)->first();
-
-    if (! $user || ! Hash::check($request->password, $user->password)) {
-        throw ValidationException::withMessages([
-            'email' => ['The provided credentials are incorrect.'],
-        ]);
-    }
-
-    return response()->json([
-        'token' => $user->createToken('auth-token')->plainTextToken,
-    ]);
-});
 
 Route::get('/register', function (Request $request) {
 
