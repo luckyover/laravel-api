@@ -6,9 +6,6 @@ info:
     name: 'Tuyen DN'
     url: ''
     email: ''
-  license:
-    name: 'Copyright © A.N.S corp. All Rights Reserved.'
-    url: ''
   version: v1
 paths:
   /api/user:

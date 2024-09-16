@@ -11,10 +11,6 @@ namespace App\Http;
  *          name="Tuyen DN",
  *          email="",
  *          url=""
- *      ),
- *      @OA\License(
- *          name="Copyright © A.N.S corp. All Rights Reserved.",
- *          url=""
  *      )
  *  )
  *  @OA\SecurityScheme(
