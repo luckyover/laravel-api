@@ -50,17 +50,17 @@ class Handler extends ExceptionHandler
         $errors = null;
         switch (true) {
             case $exception instanceof AuthenticationException:
-                $message = __('messages.errors.unauthorized');
+                $message = 'Unauthorized';
                 $statusCode = Response::HTTP_UNAUTHORIZED;
                 break;
 
             case $exception instanceof NotFoundHttpException:
-                $message = __('messages.errors.page_not_found');
+                $message = 'Page not found';
                 $statusCode = Response::HTTP_NOT_FOUND;
                 break;
 
             case $exception instanceof ModelNotFoundException:
-                $message = __('messages.errors.model_not_found');
+                $message = 'Model not found';
                 $statusCode = Response::HTTP_NOT_FOUND;
                 break;
 
@@ -97,7 +97,7 @@ class Handler extends ExceptionHandler
                 break;
         }
 
-        Log::insert('database_log', 'error', '[EXCEPTION]:' . print_r($errors, true));
+        Log::insert('database_log', 'error', '[EXCEPTION]:'. $message  . print_r($errors, true));
         // Use ErrorResource for API error responses
         if ($request->is('*api*')) {
             return response()->json([
