@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
 use App\Http\Controllers\api\ApiController;
+use App\Http\Controllers\api\HomeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,19 +16,12 @@ use App\Http\Controllers\api\ApiController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::post('/login', 'ApiController@login')->name('login');
-Route::post('/register', 'ApiController@register')->name('register');
-
-
-
-Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
-    $request->user()->tokens()->delete();
-
-    return response()->json(['message' => 'Logged out successfully']);
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::middleware('auth:sanctum')->post('/logout',[ApiController::class, 'logout'])->name('logout');
+    Route::post('/dashboard', [HomeController::class, 'index'])->name('home');
 });
 
+
+Route::post('/login', [ApiController::class, 'login'])->name('login');
+Route::post('/register',[ApiController::class, 'register'])->name('register');
 
