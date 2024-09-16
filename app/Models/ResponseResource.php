@@ -1,10 +1,10 @@
 <?php
- 
+
 namespace App\Models;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
- 
+use App\Utility\Log\Facades\Log;
 class ResponseResource extends JsonResource
 {
     /**
@@ -12,16 +12,37 @@ class ResponseResource extends JsonResource
      *
      * @return array<string, mixed>
      */
+
+    public $dataError = null;
+    // Khai báo thuộc tính $data
+    protected $data;
+
+    public string $message = '';
+
+    public int $status = 200;
+    public function __construct($data)
+    {
+        // Gán giá trị cho $data
+        $this->data = $data;
+    }
+
     public function toArray(Request $request): array
     {
-
         $result = [
-            'code' => 1232,
-            'messageNo' => 'ok',
-            'message' => 'ok',
+            'message' => $this->message,
+            'status' => $this->status,
+            'data' => $this->data,
         ];
+
+        if ($this->dataError !== null) {
+            if($this->status == 422){
+                $result['error'] = $this->dataError['error'];
+            }else{
+                Log::insert('database_log', 'error', '[EXCEPTION]:'. $this->message .' - ' . print_r($this->dataError, true));
+            }
+        }
 
         return $result;
     }
- 
+
 }

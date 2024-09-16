@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 use App\Utility\Log\Facades\Log;
+use App\Models\ResponseResource;
 class Handler extends ExceptionHandler
 {
     /**
@@ -70,7 +71,7 @@ class Handler extends ExceptionHandler
                 $errors = $exception->getData();
                 break;
             case $exception instanceof QueryException:
-                    $message = __('messages.errors.database_error');
+                    $message = 'Database error';
                     $statusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
                     $errors = [
                         'error' => $exception->getMessage(),
@@ -87,7 +88,7 @@ class Handler extends ExceptionHandler
 
             default:
                  // Handle unknown exceptions
-                 $message = __('messages.errors.internal_error');
+                 $message = 'Internal error';
                  $statusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
                  $errors = [
                     'error' => $exception->getMessage(),
@@ -97,14 +98,13 @@ class Handler extends ExceptionHandler
                 break;
         }
 
-        Log::insert('database_log', 'error', '[EXCEPTION]:'. $message  . print_r($errors, true));
         // Use ErrorResource for API error responses
         if ($request->is('*api*')) {
-            return response()->json([
-                'message' => $message,
-                'errors' => $errors,
-                'status' => $statusCode,
-            ], $statusCode);
+            $response  = new ResponseResource(null);
+            $response -> dataError  = $errors;
+            $response -> message = $message;
+            $response -> status  = $statusCode;
+            return response()->json($response, $statusCode);
         }
 
         // Default web response (non-API requests)

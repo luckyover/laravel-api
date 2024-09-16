@@ -9,6 +9,7 @@ use App\Http\Requests\RegisterRequest;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Http\Resources\LoginResource;
 class ApiController extends Controller
 {
     /**
@@ -32,7 +33,7 @@ class ApiController extends Controller
             ]);
         }
 
-        return response()->json([
+        return new LoginResource([
             'token' => $user->createToken('auth-token')->plainTextToken,
         ]);
     }
