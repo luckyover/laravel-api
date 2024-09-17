@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Message;
 class LoginRequest extends FormRequest
 {
     /**
@@ -25,6 +25,15 @@ class LoginRequest extends FormRequest
             //
             'email' => 'required|email',
             'password' => 'required',
+        ];
+
+    }
+
+    public function messages(): array
+    {
+        return [
+            'required' => Message::find(3),
+            'email' => Message::find(4),
         ];
     }
 }

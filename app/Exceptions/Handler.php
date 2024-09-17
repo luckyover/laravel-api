@@ -65,11 +65,6 @@ class Handler extends ExceptionHandler
                 $statusCode = Response::HTTP_NOT_FOUND;
                 break;
 
-            case $exception instanceof ApiException:
-                $message = $exception->getMessage();
-                $statusCode = $exception->getCode();
-                $errors = $exception->getData();
-                break;
             case $exception instanceof QueryException:
                     $message = 'Database error';
                     $statusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
@@ -78,7 +73,7 @@ class Handler extends ExceptionHandler
                         'trace'=> array_values($filteredTrace),
                     ];
                     break;
-             case $exception instanceof ValidationException:
+            case $exception instanceof ValidationException:
                     $message = 'Validation failed';
                     $statusCode = Response::HTTP_UNPROCESSABLE_ENTITY;
                     $errors = [

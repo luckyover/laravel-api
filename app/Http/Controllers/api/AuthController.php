@@ -9,38 +9,25 @@ use App\Http\Requests\RegisterRequest;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use App\Http\Resources\LoginResource;
-class ApiController extends Controller
+use App\Http\Actions\Auth\LoginAction;
+use App\Http\Actions\Auth\LogoutAction;
+use Message;
+use App\Http\Resources\Auth\LoginResource;
+class AuthController extends Controller
 {
     /**
      * login
      * @param LoginRequest
      * @return
      */
-    public function login(LoginRequest $request ) {
+    public function login(LoginRequest $request , LoginAction $action ) {
 
-        $validated = $request->validated();
-        $user = User::where('email', $validated['email'])->first();
-        if (! $user || ! Hash::check($validated['password'], $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
-        }
-
-        if ($user->auth_div != 1) {
-            throw ValidationException::withMessages([
-                'auth_div' => ['The user is not authorized.'],
-            ]);
-        }
-
-        return new LoginResource([
-            'token' => $user->createToken('auth-token')->plainTextToken,
-        ]);
+        return new LoginResource($action->handle($request->validated()));
     }
     /**
      * logout
      */
-    public function logout(Request $request){
+    public function logout(Request $request, LogoutAction $action){
         $request->user()->tokens()->delete();
         return response()->json(['message' => 'Logged out successfully']);
     }

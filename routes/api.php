@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
-use App\Http\Controllers\api\ApiController;
+use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\api\HomeController;
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +17,11 @@ use App\Http\Controllers\api\HomeController;
 |
 */
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::middleware('auth:sanctum')->post('/logout',[ApiController::class, 'logout'])->name('logout');
+    Route::middleware('auth:sanctum')->post('/logout',[AuthController::class, 'logout'])->name('logout');
     Route::post('/dashboard', [HomeController::class, 'index'])->name('home');
 });
 
 
-Route::post('/login', [ApiController::class, 'login'])->name('login');
-Route::post('/register',[ApiController::class, 'register'])->name('register');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/register',[AuthController::class, 'register'])->name('register');
 
