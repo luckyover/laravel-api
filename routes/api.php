@@ -20,7 +20,7 @@ use App\Http\Controllers\api\CategoryController;
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::middleware('auth:sanctum')->post('/logout',[AuthController::class, 'logout'])->name('logout');
 
-    Route::post('/category', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
     Route::post('/category/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('/category/update', [CategoryController::class, 'update'])->name('category.update');
     Route::post('/category/delete', [CategoryController::class, 'delete'])->name('category.delete');

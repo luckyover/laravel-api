@@ -82,7 +82,13 @@ class Handler extends ExceptionHandler
                     ];
                 break;
             case  $exception instanceof StoreException:
-                dd(1);
+                dd($errors );
+                $message = 'Database error';
+                $statusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
+                $errors = [
+                    'error' => $exception->getMessage(),
+                    'trace'=> array_values($filteredTrace),
+                ];
                 break;
             default:
                  // Handle unknown exceptions

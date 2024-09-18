@@ -8,9 +8,20 @@ use App\Http\Requests\Category\DeleteCategoryRequest;
 use Illuminate\Http\Request;
 use App\Http\Actions\Category\CreateAction;
 use App\Http\Resources\CommonResource;
+use App\Http\Actions\Category\CategoryAction;
+use App\Http\Actions\Category\DeleteAction;
+use App\Http\Actions\Category\UpdateAction;
 
 class CategoryController extends Controller
 {
+    /**
+     * index get all
+     * @param
+     * @return Resource
+     */
+    public function index(Request $request, CategoryAction $action) {
+        return new CommonResource($action->handle());
+    }
 
     /**
      * create
@@ -20,20 +31,22 @@ class CategoryController extends Controller
     public function create(StoreCategoryRequest $request,CreateAction $action) {
         return new CommonResource($action->handle($request->validated()));
     }
+
     /**
      * update
-     * @param LoginRequest
+     * @param StoreCategoryRequest
      * @return Resource
      */
-    public function update() {
-
+    public function update(StoreCategoryRequest $request ,UpdateAction $action) {
+        return new CommonResource($action->handle($request->validated()));
     }
+
     /**
      * delete
      * @param LoginRequest
      * @return Resource
      */
     public function delete() {
-
+        return new CommonResource($action->handle($request->validated()));
     }
 }

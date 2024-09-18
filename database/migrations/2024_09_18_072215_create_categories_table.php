@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('categories', function (Blueprint $table) {
-            $table->id(); // This creates an auto-incrementing ID field
-            $table->string('name', 100); // VARCHAR(100) for the 'name' column
-            $table->text('description'); // TEXT for the 'description' column
-            $table->timestamps(); // Adds 'created_at' and 'updated_at' timestamps
-            $table->integer('del_flg');
+            $table->id(); // ID tự động tăng
+            $table->string('name', 100); // Tên danh mục, giới hạn 100 ký tự
+            $table->string('slug')->unique(); // Slug duy nhất cho URL thân thiện SEO
+            $table->string('seo_title', 70)->nullable(); // Tiêu đề SEO
+            $table->string('meta_description', 160)->nullable(); // Meta description cho SEO
+            $table->timestamps(); // Thêm created_at và updated_at
+            $table->integer('del_flg')->nullable();
         });
+
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Message;
 class StoreCategoryRequest extends FormRequest
 {
     /**
@@ -23,8 +23,11 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             //
+            'id' => 'nullable',
             'name' => 'required|string|max:100',
-            'description' => 'nullable|string',
+            'slug' => 'required|string|unique:categories,slug',
+            'meta_description' => 'nullable|string',
+            'seo_title' => 'nullable|string',
         ];
     }
 
@@ -32,6 +35,7 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             'required' => Message::find(3),
+            'unique'  => Message::find(7),
         ];
     }
 }

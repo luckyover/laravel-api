@@ -11,6 +11,79 @@
         "version": "v1"
     },
     "paths": {
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Đăng nhập",
+                "operationId": "e72a9ff4bacb2b244b7cf75848e6e333",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/api_key"
+                    },
+                    {
+                        "$ref": "#/components/parameters/screen_id"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email",
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "password",
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Thành công"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/category": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get thông tin category",
+                "operationId": "6f8ce85b32d29d1a802206cacd2915ab",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/api_key"
+                    },
+                    {
+                        "$ref": "#/components/parameters/screen_id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Thành công"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/category/create": {
             "post": {
                 "tags": [
@@ -24,6 +97,117 @@
                     },
                     {
                         "$ref": "#/components/parameters/screen_id"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name",
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
+                    },
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "slug",
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
+                    },
+                    {
+                        "name": "meta_description",
+                        "in": "query",
+                        "description": "meta_description",
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
+                    },
+                    {
+                        "name": "seo_title",
+                        "in": "query",
+                        "description": "seo_title",
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Thành công"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/category/update": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Update category",
+                "operationId": "bddd6f6b0c398d385fc472c0bd5aa008",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/api_key"
+                    },
+                    {
+                        "$ref": "#/components/parameters/screen_id"
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "id",
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name",
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
+                    },
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "slug",
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
+                    },
+                    {
+                        "name": "meta_description",
+                        "in": "query",
+                        "description": "meta_description",
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
+                    },
+                    {
+                        "name": "seo_title",
+                        "in": "query",
+                        "description": "seo_title",
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
                     }
                 ],
                 "responses": {
@@ -168,6 +352,10 @@
         }
     },
     "tags": [
+        {
+            "name": "Login",
+            "description": "Login"
+        },
         {
             "name": "Category",
             "description": "Category"
