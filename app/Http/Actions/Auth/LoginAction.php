@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Repositories\api\AuthRepository;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 use Message;
 class LoginAction extends Controller
 {

@@ -12,6 +12,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 use App\Utility\Log\Facades\Log;
 use App\Models\ResponseResource;
+use App\Exceptions\StoreException;
 class Handler extends ExceptionHandler
 {
     /**
@@ -80,7 +81,9 @@ class Handler extends ExceptionHandler
                         'error' => $exception->errors(),
                     ];
                 break;
-
+            case  $exception instanceof StoreException:
+                dd(1);
+                break;
             default:
                  // Handle unknown exceptions
                  $message = 'Internal error';

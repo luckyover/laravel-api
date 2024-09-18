@@ -1,12 +1,12 @@
 <?php
-namespace App\Http\Swagger;
-class UserSwagger{
+namespace App\Http\Swagger\Category;
+class CategorySwagger {
      /**
-     * @OA\Get(
-     *     path="/api/user",
-     *     summary="Lấy thông tin người dùng",
+     * @OA\Post(
+     *     path="/api/category/create",
+     *     summary="Lưu thông tin category",
      *     security={{"bearerAuth":{}}},
-     *     tags={"User"},
+     *     tags={"Category"},
      *     @OA\Parameter(ref="#/components/parameters/api_key"),
      *     @OA\Parameter(ref="#/components/parameters/screen_id"),
      *     @OA\Response(
@@ -19,7 +19,7 @@ class UserSwagger{
      *     )
      * )
      */
-    public function getUser() {
+    public function create() {
 
     }
 }

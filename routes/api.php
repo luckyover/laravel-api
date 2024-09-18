@@ -6,6 +6,7 @@ use Illuminate\Validation\ValidationException;
 use App\Models\User;
 use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\api\HomeController;
+use App\Http\Controllers\api\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,7 +19,12 @@ use App\Http\Controllers\api\HomeController;
 */
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::middleware('auth:sanctum')->post('/logout',[AuthController::class, 'logout'])->name('logout');
-    Route::post('/dashboard', [HomeController::class, 'index'])->name('home');
+
+    Route::post('/category', [CategoryController::class, 'index'])->name('category.index');
+    Route::post('/category/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('/category/update', [CategoryController::class, 'update'])->name('category.update');
+    Route::post('/category/delete', [CategoryController::class, 'delete'])->name('category.delete');
+
 });
 
 

@@ -8,6 +8,25 @@ info:
     email: ''
   version: v1
 paths:
+  /api/category/create:
+    post:
+      tags:
+        - Category
+      summary: 'Lưu thông tin category'
+      operationId: 42277a891a5d9d947b469bd6f3e0254c
+      parameters:
+        -
+          $ref: '#/components/parameters/api_key'
+        -
+          $ref: '#/components/parameters/screen_id'
+      responses:
+        200:
+          description: 'Thành công'
+        401:
+          description: Unauthorized
+      security:
+        -
+          bearerAuth: []
   /api/user:
     get:
       tags:
@@ -17,8 +36,6 @@ paths:
       parameters:
         -
           $ref: '#/components/parameters/api_key'
-        -
-          $ref: '#/components/parameters/request_id'
         -
           $ref: '#/components/parameters/screen_id'
       responses:
@@ -38,15 +55,7 @@ components:
       required: true
       schema:
         type: string
-        example: QOa7BmWN9ukdhPYtUJqbMlmmfRmhxYzo
-    request_id:
-      name: x-request-id
-      in: header
-      description: 'Id for identity each request. It is a UUID v4'
-      required: true
-      schema:
-        type: string
-        example: 4a4c1314-4cbb-461b-9663-aa9f6f03efd9
+        example: 4GdyrjbCaemU7J6AB7YMVGapkkg3Tk6+UI/fJ7NeFPc=
     screen_id:
       name: x-screen-id
       in: header
@@ -109,6 +118,9 @@ components:
       bearerFormat: JWT
       scheme: bearer
 tags:
+  -
+    name: Category
+    description: Category
   -
     name: User
     description: User

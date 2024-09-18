@@ -27,18 +27,7 @@ namespace App\Http;
  *      description="Key for client access API",
  *      @OA\Schema(
  *          type="string",
- *          example="QOa7BmWN9ukdhPYtUJqbMlmmfRmhxYzo"
- *      ),
- *      in="header",
- *      required=true
- *  )
- *  @OA\Parameter(
- *      parameter="request_id",
- *      name="x-request-id",
- *      description="Id for identity each request. It is a UUID v4",
- *      @OA\Schema(
- *          type="string",
- *          example="4a4c1314-4cbb-461b-9663-aa9f6f03efd9"
+ *          example="4GdyrjbCaemU7J6AB7YMVGapkkg3Tk6+UI/fJ7NeFPc="
  *      ),
  *      in="header",
  *      required=true
