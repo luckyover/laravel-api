@@ -2,11 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Validation\ValidationException;
-use App\Models\User;
 use App\Http\Controllers\api\AuthController;
-use App\Http\Controllers\api\HomeController;
 use App\Http\Controllers\api\CategoryController;
+use App\Http\Controllers\api\ProductController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,6 +22,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/category/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('/category/update', [CategoryController::class, 'update'])->name('category.update');
     Route::post('/category/delete', [CategoryController::class, 'delete'])->name('category.delete');
+
+    Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+    Route::post('/product/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/product/update', [ProductController::class, 'update'])->name('product.update');
+    Route::post('/product/delete', [ProductController::class, 'delete'])->name('product.delete');
 
 });
 

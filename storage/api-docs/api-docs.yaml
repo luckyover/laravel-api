@@ -198,6 +198,250 @@ paths:
       security:
         -
           bearerAuth: []
+  /api/product:
+    get:
+      tags:
+        - Product
+      summary: 'Get thông tin product'
+      operationId: a6115629295f5748353f7cbd0f801c5a
+      parameters:
+        -
+          $ref: '#/components/parameters/api_key'
+        -
+          $ref: '#/components/parameters/screen_id'
+      responses:
+        200:
+          description: 'Thành công'
+        401:
+          description: Unauthorized
+      security:
+        -
+          bearerAuth: []
+  /api/product/create:
+    post:
+      tags:
+        - Product
+      summary: 'Lưu thông tin product'
+      operationId: 9c3ef740add78c4843545c325047cd1d
+      parameters:
+        -
+          $ref: '#/components/parameters/api_key'
+        -
+          $ref: '#/components/parameters/screen_id'
+        -
+          name: category_id
+          in: query
+          description: category_id
+          schema:
+            type: string
+            example: ''
+        -
+          name: name
+          in: query
+          description: name
+          schema:
+            type: string
+            example: ''
+        -
+          name: description
+          in: query
+          description: description
+          schema:
+            type: string
+            example: ''
+        -
+          name: price
+          in: query
+          description: price
+          schema:
+            type: string
+            example: ''
+        -
+          name: total_sales
+          in: query
+          description: total_sales
+          schema:
+            type: string
+            example: ''
+        -
+          name: rating
+          in: query
+          description: rating
+          schema:
+            type: string
+            example: ''
+        -
+          name: image_url
+          in: query
+          description: image_url
+          schema:
+            type: string
+            example: ''
+        -
+          name: brands
+          in: query
+          description: brands
+          schema:
+            type: string
+            example: ''
+        -
+          name: seo_title
+          in: query
+          description: seo_title
+          schema:
+            type: string
+            example: ''
+        -
+          name: seo_description
+          in: query
+          description: seo_description
+          schema:
+            type: string
+            example: ''
+        -
+          name: seo_slug
+          in: query
+          description: seo_slug
+          schema:
+            type: string
+            example: ''
+      responses:
+        200:
+          description: 'Thành công'
+        401:
+          description: Unauthorized
+      security:
+        -
+          bearerAuth: []
+  /api/product/update:
+    post:
+      tags:
+        - Product
+      summary: 'Update product'
+      operationId: 4fe0fb8744f51da34ebf659000e3beb9
+      parameters:
+        -
+          $ref: '#/components/parameters/api_key'
+        -
+          $ref: '#/components/parameters/screen_id'
+        -
+          name: product_id
+          in: query
+          description: product_id
+          schema:
+            type: string
+            example: ''
+        -
+          name: category_id
+          in: query
+          description: category_id
+          schema:
+            type: string
+            example: ''
+        -
+          name: name
+          in: query
+          description: name
+          schema:
+            type: string
+            example: ''
+        -
+          name: description
+          in: query
+          description: description
+          schema:
+            type: string
+            example: ''
+        -
+          name: price
+          in: query
+          description: price
+          schema:
+            type: string
+            example: ''
+        -
+          name: total_sales
+          in: query
+          description: total_sales
+          schema:
+            type: string
+            example: ''
+        -
+          name: rating
+          in: query
+          description: rating
+          schema:
+            type: string
+            example: ''
+        -
+          name: image_url
+          in: query
+          description: image_url
+          schema:
+            type: string
+            example: ''
+        -
+          name: brands
+          in: query
+          description: brands
+          schema:
+            type: string
+            example: ''
+        -
+          name: seo_title
+          in: query
+          description: seo_title
+          schema:
+            type: string
+            example: ''
+        -
+          name: seo_description
+          in: query
+          description: seo_description
+          schema:
+            type: string
+            example: ''
+        -
+          name: seo_slug
+          in: query
+          description: seo_slug
+          schema:
+            type: string
+            example: ''
+      responses:
+        200:
+          description: 'Thành công'
+        401:
+          description: Unauthorized
+      security:
+        -
+          bearerAuth: []
+  /api/product/delete:
+    post:
+      tags:
+        - Product
+      summary: 'Delete thông tin product'
+      operationId: bffbc883865b2a377e93c3ac70edc262
+      parameters:
+        -
+          $ref: '#/components/parameters/api_key'
+        -
+          $ref: '#/components/parameters/screen_id'
+        -
+          name: product_id
+          in: query
+          description: product_id
+          schema:
+            type: string
+            example: ''
+      responses:
+        200:
+          description: 'Thành công'
+        401:
+          description: Unauthorized
+      security:
+        -
+          bearerAuth: []
   /api/user:
     get:
       tags:
@@ -298,6 +542,9 @@ tags:
   -
     name: Category
     description: Category
+  -
+    name: Product
+    description: Product
   -
     name: User
     description: User

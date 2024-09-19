@@ -11,5 +11,6 @@ class CreateAction extends Controller
         $category = new Category($validated);
         $category->del_flg = 0;
         $category->save();
+        return $category;
     }
 }
