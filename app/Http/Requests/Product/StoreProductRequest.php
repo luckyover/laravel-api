@@ -29,7 +29,7 @@ class StoreProductRequest extends FormRequest
             'price' => 'required|numeric|min:0',
             'total_sales' => 'nullable|integer|min:0',
             'rating' => 'nullable|integer|between:1,5',
-            'image_url' => 'nullable|url',
+            'image_url' => 'nullable|string',
             'brands' => 'nullable|string',
             'seo_title' => 'nullable|string|max:255',
             'seo_description' => 'nullable|string',

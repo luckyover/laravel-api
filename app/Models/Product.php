@@ -11,7 +11,7 @@ class Product extends Model
 
      // If the table name is not the plural form of the model name, specify it
      protected $table = 'products';
-
+     protected $primaryKey = 'product_id';
      // Specify which attributes can be mass-assigned
      protected $fillable = ['product_id','category_id','name','description','price','total_sales','rating','image_url','brands','seo_title','seo_description','seo_slug','del_flg'];
 
