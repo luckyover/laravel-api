@@ -43,10 +43,10 @@ class CategoryController extends Controller
 
     /**
      * delete
-     * @param LoginRequest
+     * @param DeleteCategoryRequest
      * @return Resource
      */
-    public function delete() {
+    public function delete(DeleteCategoryRequest $request ,DeleteAction $action) {
         return new CommonResource($action->handle($request->validated()));
     }
 }

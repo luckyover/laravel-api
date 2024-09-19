@@ -82,11 +82,10 @@ class Handler extends ExceptionHandler
                     ];
                 break;
             case  $exception instanceof StoreException:
-                dd($errors );
-                $message = 'Database error';
-                $statusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
+                $message = $exception->getMessage();
+                $statusCode = $exception->getCode();
                 $errors = [
-                    'error' => $exception->getMessage(),
+                    'error' => $exception->errors(),
                     'trace'=> array_values($filteredTrace),
                 ];
                 break;

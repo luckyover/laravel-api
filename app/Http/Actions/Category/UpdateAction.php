@@ -5,6 +5,7 @@ namespace App\Http\Actions\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Exceptions\StoreException;
+use Message;
 class UpdateAction extends Controller
 {
 
@@ -23,10 +24,10 @@ class UpdateAction extends Controller
 
         }else{
             throw new StoreException(
-                'Something went wrong!',
-                501,
+                'Error Validate Store ',
+                201,
                 null,
-                ''
+                ['errors' => ['id' => Message::find(8)]]
             );
         }
 

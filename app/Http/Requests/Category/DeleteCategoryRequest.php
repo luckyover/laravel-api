@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Message;
 class DeleteCategoryRequest extends FormRequest
 {
     /**
@@ -23,6 +23,14 @@ class DeleteCategoryRequest extends FormRequest
     {
         return [
             //
+            'id' => 'required',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'required' => Message::find(3),
         ];
     }
 }

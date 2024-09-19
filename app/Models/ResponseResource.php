@@ -37,7 +37,7 @@ class ResponseResource extends JsonResource
         ];
 
         if ($this->dataError !== null) {
-            if($this->status == 422){
+            if($this->status == 422 || $this->status == 201 ){
                 $result['error'] = $this->dataError['error'];
             }else{
                 Log::insert('database_log', 'error', '[EXCEPTION]:'. $this->message .' - ' . print_r($this->dataError, true));

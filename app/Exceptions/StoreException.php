@@ -18,4 +18,8 @@ class StoreException extends Exception
     {
         return $this->data;
     }
+    public function errors()
+    {
+        return $this->data['errors'] ?? []; // Return the 'errors' key if it exists
+    }
 }

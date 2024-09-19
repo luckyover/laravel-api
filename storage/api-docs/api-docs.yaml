@@ -153,6 +153,46 @@ paths:
       responses:
         200:
           description: 'Thành công'
+          content:
+            application/json:
+              schema:
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                  data:
+                    properties:
+                      key1:
+                        type: string
+                      key2:
+                        type: integer
+                    type: object
+                type: object
+      security:
+        -
+          bearerAuth: []
+  /api/category/delete:
+    post:
+      tags:
+        - Category
+      summary: 'Delete thông tin category'
+      operationId: 26b8a1f9c3a75ee228eecdd9a6ad727d
+      parameters:
+        -
+          $ref: '#/components/parameters/api_key'
+        -
+          $ref: '#/components/parameters/screen_id'
+        -
+          name: id
+          in: query
+          description: id
+          schema:
+            type: string
+            example: ''
+      responses:
+        200:
+          description: 'Thành công'
         401:
           description: Unauthorized
       security:
@@ -178,6 +218,9 @@ paths:
         -
           bearerAuth: []
 components:
+  responses:
+    401:
+      description: Unauthorized
   parameters:
     api_key:
       name: x-api-key
