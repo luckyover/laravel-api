@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\api\CategoryController;
 use App\Http\Controllers\api\ProductController;
+use App\Http\Controllers\api\BrandController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,6 +29,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/product/update', [ProductController::class, 'update'])->name('product.update');
     Route::post('/product/delete', [ProductController::class, 'delete'])->name('product.delete');
 
+    Route::get('/brand', [BrandController::class, 'index'])->name('brand.index');
+    Route::post('/brand/create', [BrandController::class, 'create'])->name('brand.create');
+    Route::post('/brand/update', [BrandController::class, 'update'])->name('brand.update');
+    Route::post('/brand/delete', [BrandController::class, 'delete'])->name('brand.delete');
 });
 
 
