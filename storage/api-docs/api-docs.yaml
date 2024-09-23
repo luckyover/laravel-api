@@ -442,25 +442,6 @@ paths:
       security:
         -
           bearerAuth: []
-  /api/user:
-    get:
-      tags:
-        - User
-      summary: 'Lấy thông tin người dùng'
-      operationId: 6f40c371d2055fa35ea49ea767727d95
-      parameters:
-        -
-          $ref: '#/components/parameters/api_key'
-        -
-          $ref: '#/components/parameters/screen_id'
-      responses:
-        200:
-          description: 'Thành công'
-        401:
-          description: Unauthorized
-      security:
-        -
-          bearerAuth: []
 components:
   responses:
     401:
@@ -545,9 +526,6 @@ tags:
   -
     name: Product
     description: Product
-  -
-    name: User
-    description: User
 security:
   security:
     bearerAuth:
