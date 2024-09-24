@@ -24,7 +24,7 @@ class ProductController extends Controller
      * @param
      * @return Resource
      */
-    public function index(Request $request, ProductAction $action) {
+    public function index(ProductAction $action) {
         return new CommonResource($action->handle());
     }
 
