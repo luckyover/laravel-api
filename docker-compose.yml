@@ -1,0 +1,33 @@
+version: '3'
+services:
+  # PHP Service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: api
+    container_name: api
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: api
+      SERVICE_TAGS: dev
+      TZ: Asia/Tokyo
+    volumes:
+      - .:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - /var/www/vendor
+
+  # Nginx Service
+  server:
+    image: nginx:alpine
+    container_name: server
+    restart: unless-stopped
+    tty: true
+    environment:
+      TZ: Asia/Tokyo
+    ports:
+      - "2288:80"
+    volumes:
+      - ./public:/var/www/public
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
