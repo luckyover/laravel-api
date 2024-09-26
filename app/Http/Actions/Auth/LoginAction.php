@@ -21,7 +21,7 @@ class LoginAction extends Controller
         $user = $this->authRepository->findEmail($validated['email']);
         if (! $user || ! Hash::check($validated['password'], $user->password)) {
             throw ValidationException::withMessages([
-                'email' => Message::find(1),
+                'password' => Message::find(1),
             ]);
         }
 
