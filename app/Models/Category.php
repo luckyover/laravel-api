@@ -13,7 +13,7 @@ class Category extends Model
     protected $table = 'categories';
 
     // Specify which attributes can be mass-assigned
-    protected $fillable = ['name','slug','seo_title','meta_description','del_flg'];
+    protected $fillable = ['id','name','slug','seo_title','meta_description','del_flg'];
 
     protected $casts = [
         'created_at' => 'date:d/m/Y',

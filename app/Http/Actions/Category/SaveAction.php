@@ -16,7 +16,8 @@ class SaveAction extends Controller
 {
     // Nếu không có 'id', tạo mới một category
     if (empty($validated['id'])) {
-        $slug = Category::where('id', $validated['slug'])->where('del_flg', 0)->first();
+
+        $slug = Category::where('slug', $validated['slug'])->where('del_flg', 0)->first();
 
         if ($slug) {
             throw new StoreException(
@@ -27,7 +28,7 @@ class SaveAction extends Controller
             );
         }
 
-
+        unset($validated['id']);
         $category = new Category($validated);
         $category->del_flg = 0; // Đặt del_flg thành 0
         $category->save();
