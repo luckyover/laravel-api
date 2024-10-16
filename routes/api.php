@@ -23,6 +23,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/category/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('/category/update', [CategoryController::class, 'update'])->name('category.update');
     Route::post('/category/delete', [CategoryController::class, 'delete'])->name('category.delete');
+    Route::post('/category/search', [CategoryController::class, 'search'])->name('category.search');
 
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
     Route::post('/product/create', [ProductController::class, 'create'])->name('product.create');

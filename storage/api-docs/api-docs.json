@@ -287,6 +287,65 @@
                 ]
             }
         },
+        "/api/category/search": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Search thông tin category",
+                "operationId": "be56945302ccd8f8f748b47138d18a03",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/api_key"
+                    },
+                    {
+                        "$ref": "#/components/parameters/screen_id"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name",
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Page size",
+                        "schema": {
+                            "type": "number",
+                            "default": 20,
+                            "example": 10
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "schema": {
+                            "type": "number",
+                            "default": 1,
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Thành công"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/product": {
             "get": {
                 "tags": [

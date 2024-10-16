@@ -5,12 +5,14 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\StoreCategoryRequest;
 use App\Http\Requests\Category\DeleteCategoryRequest;
+use App\Http\Requests\Category\SearchCategoryRequest;
 use Illuminate\Http\Request;
 use App\Http\Actions\Category\CreateAction;
 use App\Http\Resources\CommonResource;
 use App\Http\Actions\Category\CategoryAction;
 use App\Http\Actions\Category\DeleteAction;
 use App\Http\Actions\Category\UpdateAction;
+use App\Http\Actions\Category\SearchAction;
 
 class CategoryController extends Controller
 {
@@ -47,6 +49,14 @@ class CategoryController extends Controller
      * @return Resource
      */
     public function delete(DeleteCategoryRequest $request ,DeleteAction $action) {
+        return new CommonResource($action->handle($request->validated()));
+    }
+    /**
+     * delete
+     * @param DeleteCategoryRequest
+     * @return Resource
+     */
+    public function search(SearchCategoryRequest $request ,SearchAction $action) {
         return new CommonResource($action->handle($request->validated()));
     }
 }

@@ -162,6 +162,46 @@ class CategorySwagger {
 
     }
 
+       /**
+     * @OA\Post(
+     *     path="/api/category/search",
+     *     summary="Search thông tin category",
+     *     security={{"bearerAuth":{}}},
+     *     tags={"Category"},
+     *     @OA\Parameter(ref="#/components/parameters/api_key"),
+     *     @OA\Parameter(ref="#/components/parameters/screen_id"),
+     *     @OA\Parameter(
+     *          name="name",
+     *          description="Name",
+     *          in="query",
+     *          @OA\Schema(type="string", example="")
+     *      ),
+     *    @OA\Parameter(
+     *          name="page_size",
+     *          description="Page size",
+     *          in="query",
+     *          @OA\Schema(type="number", example=10)
+     *      ),
+     *    @OA\Parameter(
+     *          name="page",
+     *          description="Page",
+     *          in="query",
+     *          @OA\Schema(type="number",example=1)
+     *      ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Thành công",
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthorized"
+     *     )
+     * )
+     */
+
+    public function search(){
+
+    }
 
 
 }
