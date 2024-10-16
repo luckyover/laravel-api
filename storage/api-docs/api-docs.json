@@ -90,7 +90,7 @@
                     "Category"
                 ],
                 "summary": "Lưu thông tin category",
-                "operationId": "42277a891a5d9d947b469bd6f3e0254c",
+                "operationId": "89fb65b4486d5725ac9628e25408e792",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/api_key"
@@ -150,13 +150,13 @@
                 ]
             }
         },
-        "/api/category/update": {
+        "/api/category/save": {
             "post": {
                 "tags": [
                     "Category"
                 ],
-                "summary": "Update category",
-                "operationId": "bddd6f6b0c398d385fc472c0bd5aa008",
+                "summary": "Save category",
+                "operationId": "a28a30f427ffd0be0d3963309011aa3e",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/api_key"
@@ -248,45 +248,6 @@
                 ]
             }
         },
-        "/api/category/delete": {
-            "post": {
-                "tags": [
-                    "Category"
-                ],
-                "summary": "Delete thông tin category",
-                "operationId": "26b8a1f9c3a75ee228eecdd9a6ad727d",
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/api_key"
-                    },
-                    {
-                        "$ref": "#/components/parameters/screen_id"
-                    },
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "id",
-                        "schema": {
-                            "type": "string",
-                            "example": ""
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Thành công"
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
         "/api/category/search": {
             "post": {
                 "tags": [
@@ -316,7 +277,6 @@
                         "description": "Page size",
                         "schema": {
                             "type": "number",
-                            "default": 20,
                             "example": 10
                         }
                     },
@@ -326,7 +286,6 @@
                         "description": "Page",
                         "schema": {
                             "type": "number",
-                            "default": 1,
                             "example": 1
                         }
                     }

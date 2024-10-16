@@ -20,8 +20,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::middleware('auth:sanctum')->post('/logout',[AuthController::class, 'logout'])->name('logout');
 
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
-    Route::post('/category/create', [CategoryController::class, 'create'])->name('category.create');
-    Route::post('/category/update', [CategoryController::class, 'update'])->name('category.update');
+    Route::post('/category/save', [CategoryController::class, 'save'])->name('category.save');
     Route::post('/category/delete', [CategoryController::class, 'delete'])->name('category.delete');
     Route::post('/category/search', [CategoryController::class, 'search'])->name('category.search');
 

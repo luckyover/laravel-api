@@ -7,7 +7,7 @@ use App\Http\Requests\Category\StoreCategoryRequest;
 use App\Http\Requests\Category\DeleteCategoryRequest;
 use App\Http\Requests\Category\SearchCategoryRequest;
 use Illuminate\Http\Request;
-use App\Http\Actions\Category\CreateAction;
+use App\Http\Actions\Category\SaveAction;
 use App\Http\Resources\CommonResource;
 use App\Http\Actions\Category\CategoryAction;
 use App\Http\Actions\Category\DeleteAction;
@@ -30,18 +30,18 @@ class CategoryController extends Controller
      * @param StoreCategoryRequest
      * @return Resource
      */
-    public function create(StoreCategoryRequest $request,CreateAction $action) {
+    public function save(StoreCategoryRequest $request,SaveAction $action) {
         return new CommonResource($action->handle($request->validated()));
     }
 
-    /**
-     * update
-     * @param StoreCategoryRequest
-     * @return Resource
-     */
-    public function update(StoreCategoryRequest $request ,UpdateAction $action) {
-        return new CommonResource($action->handle($request->validated()));
-    }
+    // /**
+    //  * update
+    //  * @param StoreCategoryRequest
+    //  * @return Resource
+    //  */
+    // public function update(StoreCategoryRequest $request ,UpdateAction $action) {
+    //     return new CommonResource($action->handle($request->validated()));
+    // }
 
     /**
      * delete
