@@ -31,6 +31,7 @@ class LoginAction extends Controller
             ]);
         }
         $data['token'] =  $user->createToken('auth-token')->plainTextToken;
+        $data['user'] = $user;
         return  $data;
     }
 }
