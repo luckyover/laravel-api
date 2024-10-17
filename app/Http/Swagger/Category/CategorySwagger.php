@@ -26,36 +26,19 @@ class CategorySwagger {
 
      /**
      * @OA\Post(
-     *     path="/api/category/create",
-     *     summary="Lưu thông tin category",
+     *     path="/api/category/delete",
+     *     summary="Xóa category",
      *     security={{"bearerAuth":{}}},
      *     tags={"Category"},
      *     @OA\Parameter(ref="#/components/parameters/api_key"),
      *     @OA\Parameter(ref="#/components/parameters/screen_id"),
      *     @OA\Parameter(
-     *          name="name",
-     *          description="name",
+     *          name="id",
+     *          description="id",
      *          in="query",
      *          @OA\Schema(type="string", example="")
      *      ),
-     *     @OA\Parameter(
-     *          name="slug",
-     *          description="slug",
-     *          in="query",
-     *          @OA\Schema(type="string", example="")
-     *      ),
-     *     @OA\Parameter(
-     *          name="meta_description",
-     *          description="meta_description",
-     *          in="query",
-     *          @OA\Schema(type="string", example="")
-     *      ),
-     *      @OA\Parameter(
-     *          name="seo_title",
-     *          description="seo_title",
-     *          in="query",
-     *          @OA\Schema(type="string", example="")
-     *      ),
+
      *     @OA\Response(
      *         response=200,
      *         description="Thành công",
@@ -66,7 +49,7 @@ class CategorySwagger {
      *     )
      * )
      */
-    public function save() {
+    public function delete() {
 
     }
 
@@ -131,7 +114,7 @@ class CategorySwagger {
      * )
      */
 
-    public function delete() {
+    public function save() {
 
     }
 

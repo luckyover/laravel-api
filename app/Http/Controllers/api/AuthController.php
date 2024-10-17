@@ -18,7 +18,6 @@ class AuthController extends Controller
      * @return
      */
     public function login(LoginRequest $request , LoginAction $action ) {
-
         return new CommonResource($action->handle($request->validated()));
     }
     /**

@@ -6,6 +6,7 @@ use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\api\CategoryController;
 use App\Http\Controllers\api\ProductController;
 use App\Http\Controllers\api\BrandController;
+use App\Http\Controllers\api\common\CommonController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,7 +18,10 @@ use App\Http\Controllers\api\BrandController;
 |
 */
 Route::middleware(['auth:sanctum'])->group(function () {
+
     Route::middleware('auth:sanctum')->post('/logout',[AuthController::class, 'logout'])->name('logout');
+    Route::post('/autocomplete', [CommonController::class, 'autoComplete'])->name('autoComplete');
+
 
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
     Route::post('/category/save', [CategoryController::class, 'save'])->name('category.save');

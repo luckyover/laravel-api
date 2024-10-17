@@ -57,42 +57,21 @@ paths:
       security:
         -
           bearerAuth: []
-  /api/category/create:
+  /api/category/delete:
     post:
       tags:
         - Category
-      summary: 'Lưu thông tin category'
-      operationId: 89fb65b4486d5725ac9628e25408e792
+      summary: 'Xóa category'
+      operationId: 26b8a1f9c3a75ee228eecdd9a6ad727d
       parameters:
         -
           $ref: '#/components/parameters/api_key'
         -
           $ref: '#/components/parameters/screen_id'
         -
-          name: name
+          name: id
           in: query
-          description: name
-          schema:
-            type: string
-            example: ''
-        -
-          name: slug
-          in: query
-          description: slug
-          schema:
-            type: string
-            example: ''
-        -
-          name: meta_description
-          in: query
-          description: meta_description
-          schema:
-            type: string
-            example: ''
-        -
-          name: seo_title
-          in: query
-          description: seo_title
+          description: id
           schema:
             type: string
             example: ''
@@ -109,7 +88,7 @@ paths:
       tags:
         - Category
       summary: 'Save category'
-      operationId: a28a30f427ffd0be0d3963309011aa3e
+      operationId: a9645fb71ef7310baa16703b02725b7b
       parameters:
         -
           $ref: '#/components/parameters/api_key'
