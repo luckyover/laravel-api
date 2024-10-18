@@ -21,6 +21,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::middleware('auth:sanctum')->post('/logout',[AuthController::class, 'logout'])->name('logout');
     Route::post('/autocomplete', [CommonController::class, 'autoComplete'])->name('autoComplete');
+    Route::post('common/find', [CommonController::class, 'find'])->name('find');
 
 
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');

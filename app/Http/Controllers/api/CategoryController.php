@@ -11,10 +11,7 @@ use App\Http\Actions\Category\SaveAction;
 use App\Http\Resources\CommonResource;
 use App\Http\Actions\Category\CategoryAction;
 use App\Http\Actions\Category\DeleteAction;
-use App\Http\Actions\Category\UpdateAction;
 use App\Http\Actions\Category\SearchAction;
-use App\Http\Actions\Category\FindAction;
-
 class CategoryController extends Controller
 {
     /**
@@ -35,14 +32,6 @@ class CategoryController extends Controller
         return new CommonResource($action->handle($request->validated()));
     }
 
-    /**
-     * Find
-     * @param Request
-     * @return Resource
-     */
-    public function find(Request $request ,FindAction $action) {
-        return new CommonResource($action->handle($request));
-    }
 
     /**
      * delete
