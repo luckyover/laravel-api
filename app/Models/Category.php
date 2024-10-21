@@ -16,7 +16,7 @@ class Category extends Model
     protected $fillable = ['id','name','slug','seo_title','meta_description','del_flg'];
 
     protected $casts = [
-        'created_at' => 'date:d/m/Y',
-        'updated_at' => 'date:d/m/Y',
+        'created_at' => 'date:d/m/Y H:i',
+        'updated_at' => 'date:d/m/Y H:i',
     ];
 }
