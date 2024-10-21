@@ -29,9 +29,12 @@ class SearchAction extends Controller
 
         return [
             'data' => $items,
-            'total' => $total,
-            'page_size' => $page_size,
-            'page' => $page,
+            'pagination' => [
+                'total' => $total,
+                'page_size' => $page_size,
+                'page' => $page,
+            ]
+
         ];
     }
 }
