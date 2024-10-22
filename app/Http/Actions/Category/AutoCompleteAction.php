@@ -17,6 +17,7 @@ class AutoCompleteAction extends Controller
                       ->orWhereRaw("CAST(id AS CHAR) LIKE ?", ['%' . $key . '%']);
             }
         })
+        ->where('del_flg', 0)
         ->limit(50) // Giới hạn kết quả trả về tối đa 50 bản ghi
         ->get();
        return $data;
