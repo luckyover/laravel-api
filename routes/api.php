@@ -31,9 +31,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/category/find', [CategoryController::class, 'find'])->name('category.find');
 
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
-    Route::post('/product/create', [ProductController::class, 'create'])->name('product.create');
-    Route::post('/product/update', [ProductController::class, 'update'])->name('product.update');
+    Route::post('/product/save', [ProductController::class, 'save'])->name('product.save');
     Route::post('/product/delete', [ProductController::class, 'delete'])->name('product.delete');
+    Route::post('/product/search', [ProductController::class, 'search'])->name('product.search');
+    Route::post('/product/find', [ProductController::class, 'find'])->name('product.find');
 
     Route::get('/brand', [BrandController::class, 'index'])->name('brand.index');
     Route::post('/brand/create', [BrandController::class, 'create'])->name('brand.create');

@@ -9,7 +9,7 @@ class SearchAction extends Controller
 
     public function handle($validated){
 
-        $name = $validated['name'] ?? '';
+        $name = $validated['category_nm'] ?? '';
 
         $page_size = $validated['page_size'] ?? 20;
         $page = $validated['page'] ?? 1;
@@ -18,14 +18,14 @@ class SearchAction extends Controller
         $offset = ($page - 1) * $page_size;
 
         // Search and paginate results
-        $items = Category::where('name', 'like', "%{$name }%")
+        $items = Category::where('category_nm', 'like', "%{$name }%")
             ->where('del_flg', 0)
             ->offset($offset)
             ->limit($page_size)
             ->get();
 
         // Get the total count of items for the query
-        $total = Category::where('name', 'like', "%{$name}%")->where('del_flg', 0)->count();
+        $total = Category::where('category_nm', 'like', "%{$name}%")->where('del_flg', 0)->count();
 
         return [
             'data' => $items,

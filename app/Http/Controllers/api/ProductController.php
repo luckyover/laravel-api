@@ -9,11 +9,9 @@ use App\Http\Resources\CommonResource;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\DeleteProductRequest;
 
-use App\Http\Actions\Product\CreateAction;
-
 use App\Http\Actions\Product\ProductAction;
 use App\Http\Actions\Product\DeleteAction;
-use App\Http\Actions\Product\UpdateAction;
+use App\Http\Actions\Product\SaveAction;
 
 
 class ProductController extends Controller
@@ -33,18 +31,10 @@ class ProductController extends Controller
      * @param StoreCategoryRequest
      * @return Resource
      */
-    public function create(StoreProductRequest $request,CreateAction $action) {
+    public function save(StoreProductRequest $request,SaveAction $action) {
         return new CommonResource($action->handle($request->validated()));
     }
 
-    /**
-     * update
-     * @param StoreCategoryRequest
-     * @return Resource
-     */
-    public function update(StoreProductRequest $request ,UpdateAction $action) {
-        return new CommonResource($action->handle($request->validated()));
-    }
 
     /**
      * delete

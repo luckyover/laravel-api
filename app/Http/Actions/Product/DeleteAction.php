@@ -20,9 +20,9 @@ class DeleteAction extends Controller
         }else{
             throw new StoreException(
                 'Error Validate Store ',
-                201,
+                422,
                 null,
-                ['errors' => ['product_id' => Message::find(8)]]
+                ['errors' => ['product_id' =>[ Message::find(8)]]]
             );
         }
 

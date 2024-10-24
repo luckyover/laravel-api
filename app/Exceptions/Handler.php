@@ -13,6 +13,8 @@ use Illuminate\Validation\ValidationException;
 use App\Utility\Log\Facades\Log;
 use App\Models\ResponseResource;
 use App\Exceptions\StoreException;
+use PhpParser\Node\Stmt\TryCatch;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -52,8 +54,10 @@ class Handler extends ExceptionHandler
         $errors = null;
         switch (true) {
             case $exception instanceof AuthenticationException:
+
                 $message = 'Unauthorized';
                 $statusCode = Response::HTTP_UNAUTHORIZED;
+
                 break;
 
             case $exception instanceof NotFoundHttpException:
@@ -97,20 +101,30 @@ class Handler extends ExceptionHandler
                     'error' => $exception->getMessage(),
                     'trace'=> array_values($filteredTrace),
                 ];
-
                 break;
         }
 
         // Use ErrorResource for API error responses
+
         if ($request->is('*api*')) {
-            $response  = new ResponseResource(null);
-            $response -> dataError  = $errors;
-            $response -> message = $message;
-            $response -> status  = $statusCode;
-            return response()->json($response, $statusCode);
+            try{
+
+                $response  = new ResponseResource(null);
+
+                $response -> dataError  = $errors;
+                $response -> message = $message;
+                $response -> status  = $statusCode;
+
+                return response()->json($response, $statusCode);
+            } catch (\Throwable $th) {
+                dd($th);
+            }
+
+
         }
 
+
         // Default web response (non-API requests)
-        return response($message, $statusCode);
+        return response()->json($message, $statusCode);
     }
 }

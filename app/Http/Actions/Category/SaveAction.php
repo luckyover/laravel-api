@@ -7,50 +7,48 @@ use App\Models\Category;
 use App\Exceptions\StoreException;
 use Message;
 
-use function PHPUnit\Framework\returnValue;
-
 class SaveAction extends Controller
 {
 
     public function handle($validated)
 {
     // Nếu không có 'id', tạo mới một category
-    if (empty($validated['id'])) {
+    if (empty($validated['category_id'])) {
 
-        $slug = Category::where('slug', $validated['slug'])->where('del_flg', 0)->first();
+        $slug = Category::where('s_slug', $validated['s_slug'])->where('del_flg', 0)->first();
 
         if ($slug) {
             throw new StoreException(
                 'Slug already exists.',
-                201, // Mã lỗi 201 Conflict
+                422, // Mã lỗi 201 Conflict
                 null,
-                ['errors' => ['slug' => 'The slug has already been taken.']]
+                ['errors' => ['s_slug' => ['The slug has already been taken.']]]
             );
         }
 
-        unset($validated['id']);
+        unset($validated['category_id']);
         $category = new Category($validated);
         $category->del_flg = 0; // Đặt del_flg thành 0
         $category->save();
     } else {
         // Tìm category bằng id
-        $category = Category::where('id', $validated['id'])->where('del_flg', 0)->first();
+        $category = Category::where('category_id', $validated['category_id'])->where('del_flg', 0)->first();
 
         if ($category ) {
-            $slug = Category::where('slug', $validated['slug'])->where('id', '<>', $validated['id']) ->where('del_flg', 0)->first();
+            $slug = Category::where('s_slug', $validated['s_slug'])->where('category_id', '<>', $validated['category_id']) ->where('del_flg', 0)->first();
             if ($slug) {
                 throw new StoreException(
-                    'Slug already exists.',
+                    'Error Validate Store.',
                     201, // Mã lỗi 201 Conflict
                     null,
-                    ['errors' => ['slug' => 'The slug has already been taken.']]
+                    ['errors' => ['s_slug' => ['The slug has already been taken.']]]
                 );
             }
             // Cập nhật các trường cần thiết
-            $category->name = $validated['name'];
-            $category->slug = $validated['slug'];
-            $category->seo_title = $validated['seo_title'];
-            $category->meta_description = $validated['meta_description'];
+            $category->category_nm = $validated['category_nm'];
+            $category->s_slug = $validated['s_slug'];
+            $category->s_title = $validated['s_title'];
+            $category->m_description = $validated['m_description'];
 
             // Lưu các thay đổi vào cơ sở dữ liệu
             $category->save();
@@ -58,9 +56,9 @@ class SaveAction extends Controller
         } else {
             throw new StoreException(
                 'Error Validate Store',
-                201, // Mã lỗi 201 Not Found
+                422, // Mã lỗi 201 Not Found
                 null,
-                ['errors' => ['id' => Message::find(8)]]
+                ['errors' => ['category_id' => [Message::find(8)]]]
             );
         }
     }

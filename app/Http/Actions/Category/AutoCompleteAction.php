@@ -13,8 +13,8 @@ class AutoCompleteAction extends Controller
 
             // Kiểm tra nếu `key` không trống, thực hiện tìm kiếm theo `name` hoặc `id`
             if (!empty($key)) {
-                $query->whereRaw("REPLACE(LOWER(name), ' ', '') LIKE ?", ['%' . $key . '%'])
-                      ->orWhereRaw("CAST(id AS CHAR) LIKE ?", ['%' . $key . '%']);
+                $query->whereRaw("REPLACE(LOWER(category_nm), ' ', '') LIKE ?", ['%' . $key . '%'])
+                      ->orWhereRaw("CAST(category_id AS CHAR) LIKE ?", ['%' . $key . '%']);
             }
         })
         ->where('del_flg', 0)

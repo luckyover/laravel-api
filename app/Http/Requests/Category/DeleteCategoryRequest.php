@@ -23,7 +23,7 @@ class DeleteCategoryRequest extends FormRequest
     {
         return [
             //
-            'id' => 'required',
+            'category_id' => 'required',
         ];
     }
 

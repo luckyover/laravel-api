@@ -25,11 +25,12 @@ class ResponseResource extends JsonResource
     {
         // Gán giá trị cho $data
         $this->data = $data;
-        $this->message = Message::find(5);
+        $this->message = Message::find(5) ?? '';
     }
 
     public function toArray(Request $request): array
     {
+
         $result = [
             'message' => $this->message,
             'status' => $this->status,

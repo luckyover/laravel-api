@@ -23,17 +23,18 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'product_id' => 'nullable',
+            'product_nm' => 'string|max:255',
             'category_id' => 'required|exists:categories,id|integer',
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
-            'total_sales' => 'nullable|integer|min:0',
-            'rating' => 'nullable|integer|between:1,5',
-            'image_url' => 'nullable|string',
-            'brands' => 'nullable|string',
-            'seo_title' => 'nullable|string|max:255',
-            'seo_description' => 'nullable|string',
-            'seo_slug' => 'nullable|string|max:255',
+            'price_sub' => 'nullable|numeric|min:0',
+            'qty_sell' => 'required|integer|min:0',
+            'rating' => 'required|integer|between:1,5',
+            'img' => 'required|file',
+            'brand_id' => 'nullable|string',
+            's_title' => 'nullable|string|max:255',
+            's_slug' => 'nullable|string|max:255',
+            'm_description' => 'nullable|string',
+            'description' => 'nullable|string',
         ];
     }
 

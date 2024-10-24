@@ -10,7 +10,7 @@ class FindAction extends Controller
 {
 
     public function handle($validated){
-        $category = Category::where('id', $validated['key'] ?? '')->where('del_flg', 0)->first();
+        $category = Category::where('category_id', $validated['key'] ?? '')->where('del_flg', 0)->first();
         return  $category;
     }
 }

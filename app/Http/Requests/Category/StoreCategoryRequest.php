@@ -23,11 +23,11 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             //
-            'id' => 'nullable',
-            'name' => 'required|string|max:100',
-            'slug' => 'required|string',
-            'meta_description' => 'nullable|string',
-            'seo_title' => 'nullable|string',
+            'category_id' => 'nullable',
+            'category_nm' => 'required|string|max:100',
+            's_slug' => 'required|string',
+            'm_description' => 'nullable|string',
+            's_title' => 'nullable|string',
         ];
     }
 

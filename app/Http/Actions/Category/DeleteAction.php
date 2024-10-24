@@ -10,7 +10,7 @@ class DeleteAction extends Controller
 {
 
     public function handle($validated){
-        $category = Category::where('id', $validated['id'])->where('del_flg', 0)->first();
+        $category = Category::where('category_id', $validated['category_id'])->where('del_flg', 0)->first();
         if ($category) {
             // Xóa các trường cần thiết
             $category->del_flg = 1;
@@ -20,9 +20,9 @@ class DeleteAction extends Controller
         }else{
             throw new StoreException(
                 'Error Validate Store ',
-                201,
+                422,
                 null,
-                ['errors' => ['id' => Message::find(8)]]
+                ['errors' => ['category_id' =>[ Message::find(8)]]]
             );
         }
 

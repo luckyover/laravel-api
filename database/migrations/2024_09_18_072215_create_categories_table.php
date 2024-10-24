@@ -13,11 +13,11 @@ return new class extends Migration
     {
 
         Schema::create('categories', function (Blueprint $table) {
-            $table->id(); // ID tự động tăng
-            $table->string('name', 100); // Tên danh mục, giới hạn 100 ký tự
-            $table->string('slug')->nullable(); // Slug duy nhất cho URL thân thiện SEO
-            $table->string('seo_title', 70)->nullable(); // Tiêu đề SEO
-            $table->string('meta_description', 160)->nullable(); // Meta description cho SEO
+            $table->unsignedBigInteger('category_id')->autoIncrement();
+            $table->string('category_nm', 100); // Tên danh mục, giới hạn 100 ký tự
+            $table->string('s_slug')->nullable(); // Slug duy nhất cho URL thân thiện SEO
+            $table->string('s_title', 70)->nullable(); // Tiêu đề SEO
+            $table->string('m_description', 160)->nullable(); // Meta description cho SEO
             $table->timestamps(); // Thêm created_at và updated_at
             $table->integer('del_flg')->nullable();
         });

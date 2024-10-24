@@ -23,7 +23,7 @@ class SearchCategoryRequest extends FormRequest
     {
         return [
             //
-            'name' => 'nullable|string',
+            'category_nm' => 'nullable|string',
             'page' => 'nullable|integer',
             'page_size' => 'nullable|integer',
         ];

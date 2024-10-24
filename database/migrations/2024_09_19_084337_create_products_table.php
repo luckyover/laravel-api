@@ -14,16 +14,18 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->unsignedBigInteger('product_id')->autoIncrement();
             $table->unsignedBigInteger('category_id');
-            $table->string('name');
+            $table->string('product_nm')->nullable();
             $table->text('description')->nullable();
-            $table->decimal('price', 10, 2);
-            $table->unsignedBigInteger('total_sales')->nullable();
+            $table->decimal('price', 10, 2)->nullable();
+            $table->decimal('price_sub', 10, 2)->nullable();
+            $table->integer('qty_sell')->nullable();
             $table->integer('rating')->nullable();
-            $table->string('image_url')->nullable();
-            $table->string('brands')->nullable();
-            $table->string('seo_title')->nullable();
-            $table->text('seo_description')->nullable();
-            $table->string('seo_slug')->nullable();
+            $table->string('img')->nullable();
+            $table->string('alt_img')->nullable();
+            $table->string('brand_id')->nullable();
+            $table->string('s_title')->nullable();
+            $table->text('m_description')->nullable();
+            $table->string('s_slug')->nullable();
             $table->timestamps();
             $table->integer('del_flg')->nullable();
         });
