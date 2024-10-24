@@ -94,12 +94,13 @@ class Handler extends ExceptionHandler
                 ];
                 break;
             default:
+
                  // Handle unknown exceptions
                  $message = 'Internal error';
                  $statusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
                  $errors = [
                     'error' => $exception->getMessage(),
-                    'trace'=> array_values($filteredTrace),
+                    'trace'=> array_values($filteredTrace[1]),
                 ];
                 break;
         }

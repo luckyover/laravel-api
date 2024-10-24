@@ -29,7 +29,7 @@ class StoreProductRequest extends FormRequest
             'price_sub' => 'nullable|numeric|min:0',
             'qty_sell' => 'required|integer|min:0',
             'rating' => 'required|integer|between:1,5',
-            'img' => 'required|file',
+            'img.*.file' => 'required|file',
             'brand_id' => 'nullable|string',
             's_title' => 'nullable|string|max:255',
             's_slug' => 'nullable|string|max:255',

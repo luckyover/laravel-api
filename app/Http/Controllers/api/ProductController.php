@@ -32,7 +32,7 @@ class ProductController extends Controller
      * @return Resource
      */
     public function save(StoreProductRequest $request,SaveAction $action) {
-        return new CommonResource($action->handle($request->validated()));
+        return new CommonResource($action->handle($request->validated(),$request));
     }
 
 
